@@ -97,7 +97,7 @@ struct config *parse_configuration(int argc, char *argv[]) {
     config_destroy(conf);
     return NULL;
   }
-  if (conf->daemon != NO_OPTION * *conf->log_file == NULL) {
+  if (conf->daemon != NO_OPTION && conf->log_file == NULL) {
     conf->log_file = strdup("HTTPd.log");
   }
   return conf;
