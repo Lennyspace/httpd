@@ -77,9 +77,9 @@ struct config *parse_configuration(int argc, char *argv[]) {
     case 'i':
       if (strcmp(optarg, "start") == 0) {
         conf->daemon = START;
-      } else if (strcmp(optarg, "stop")) {
+      } else if (strcmp(optarg, "stop") == 0) {
         conf->daemon = STOP;
-      } else if (strcmp(optarg, "restart")) {
+      } else if (strcmp(optarg, "restart") == 0) {
         conf->daemon = RESTART;
 
       } else {
@@ -96,6 +96,9 @@ struct config *parse_configuration(int argc, char *argv[]) {
   if (!pid_file || !server_name || !has_port || !has_ip || !has_root_dir) {
     config_destroy(conf);
     return NULL;
+  }
+  if (conf->daemon != NO_OPTION * *conf->log_file == NULL) {
+    conf->log_file = strdup("HTTPd.log");
   }
   return conf;
 }
