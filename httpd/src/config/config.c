@@ -1,5 +1,6 @@
 #include "config.h"
 #include "../utils/string/string.h"
+#include <bits/getopt_core.h>
 #include <getopt.h>
 #include <stdbool.h>
 #include <stdlib.h>
@@ -10,6 +11,7 @@ struct config *parse_configuration(int argc, char *argv[]) {
   conf->pid_file = NULL;
   conf->log = true;
   conf->log_file = NULL;
+  conf->daemon = NO_OPTION;
 
   conf->servers = malloc(sizeof(struct server_config));
   conf->servers->server_name = NULL;
@@ -26,6 +28,7 @@ struct config *parse_configuration(int argc, char *argv[]) {
                              {"ip", required_argument, NULL, 'f'},
                              {"root_dir", required_argument, NULL, 'g'},
                              {"default_file", required_argument, NULL, 'h'},
+                             {"daemon", required_argument, NULL, 'i'},
                              {NULL, 0, NULL, 0}};
 
   bool pid_file = false;
@@ -71,6 +74,18 @@ struct config *parse_configuration(int argc, char *argv[]) {
       free(conf->servers->default_file);
       conf->servers->default_file = strdup(optarg);
       break;
+    case 'i':
+      if (strcmp(optarg, "start") == 0) {
+        conf->daemon = START;
+      } else if (strcmp(optarg, "stop")) {
+        conf->daemon = STOP;
+      } else if (strcmp(optarg, "restart")) {
+        conf->daemon = RESTART;
+
+      } else {
+        config_destroy(conf);
+        return NULL;
+      }
     default:
       config_destroy(conf);
       return NULL;
