@@ -7,7 +7,6 @@
 
 struct config *parse_configuration(int argc, char *argv[]) {
   struct config *conf = malloc(sizeof(struct config));
-  conf->servers->default_file = strdup("index.html");
   conf->pid_file = NULL;
   conf->log = true;
   conf->log_file = NULL;
