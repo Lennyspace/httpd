@@ -86,6 +86,7 @@ struct config *parse_configuration(int argc, char *argv[]) {
         config_destroy(conf);
         return NULL;
       }
+      break;
     default:
       config_destroy(conf);
       return NULL;
