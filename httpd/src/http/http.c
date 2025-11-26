@@ -78,19 +78,27 @@ static int parse_ligne_requete(struct requete_http *requete,
         string_create(ligne->data + pos_espace2 + 1, taille_version);
 
     if (requete->methode->size == 0 || requete->cible->size == 0
-        || requete->version->size == 0 || requete->cible->data[0] != '/')
+        || requete->version->size == 0 || requete->cible->data[0] != '/'
+        || requete->version->size != 8 || requete->cible->data[0] != '/'
+        || +memcmp(requete->version->data, "HTTP/", 5) != 0
+        || +requete->version->data[5] < '0' || requete->version->data[5] > '9'
+        || +requete->version->data[6] != '.' || requete->version->data[7] < '0'
+        || +requete->version->data[7] > '9')
     {
         if (requete->methode)
         {
             string_destroy(requete->methode);
+            requete->methode = NULL;
         }
         if (requete->cible)
         {
             string_destroy(requete->cible);
+            requete->cible = NULL;
         }
         if (requete->version)
         {
             string_destroy(requete->version);
+            requete->version = NULL;
         }
         return -1;
     }

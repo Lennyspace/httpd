@@ -56,7 +56,7 @@ int daemon_stop(struct config *conf)
         kill(pid, SIGINT);
     }
     fclose(f);
-    unlink(conf->pid_file);
+    remove(conf->pid_file);
     return 0;
 }
 
