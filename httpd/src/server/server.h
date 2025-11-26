@@ -3,4 +3,4 @@
 
 void start_serv(char *ip, char *port, char *root_dir, char *default_file);
 
-#endif
+#endif /* SERVER_H */

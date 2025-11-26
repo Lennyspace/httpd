@@ -37,5 +37,4 @@ void liberer_reponse(struct reponse_http *reponse);
 int methode_supportee(struct string *methode);
 int version_supportee(struct string *version);
 
-
 #endif /* HTTP_H */

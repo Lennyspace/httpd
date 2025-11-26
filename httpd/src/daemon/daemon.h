@@ -6,4 +6,4 @@ int daemon_start(struct config *conf);
 
 int daemon_stop(struct config *conf);
 int daemon_restart(struct config *conf);
-#endif
+#endif /* DAEMON_H */

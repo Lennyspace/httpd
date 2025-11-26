@@ -10,7 +10,13 @@
 ** NO_OPTION if the '--daemon' option is not given
 ** START, STOP, RESTART if option is "start", "stop" and "restart"
 */
-enum daemon { NO_OPTION = 0, START, STOP, RESTART };
+enum daemon
+{
+    NO_OPTION = 0,
+    START,
+    STOP,
+    RESTART
+};
 
 /*
 ** @brief Configuration structure
@@ -21,13 +27,14 @@ enum daemon { NO_OPTION = 0, START, STOP, RESTART };
 ** @param servers The information of the server
 ** @daemon option for the daemon (START, STOP, RESTART)
 */
-struct config {
-  char *pid_file;
-  char *log_file;
-  bool log;
+struct config
+{
+    char *pid_file;
+    char *log_file;
+    bool log;
 
-  struct server_config *servers;
-  enum daemon daemon;
+    struct server_config *servers;
+    enum daemon daemon;
 };
 
 /*
@@ -39,12 +46,13 @@ struct config {
 ** @param root_dir Root directory to serve
 ** @param default_file Default file to serve
 */
-struct server_config {
-  struct string *server_name;
-  char *port;
-  char *ip;
-  char *root_dir;
-  char *default_file;
+struct server_config
+{
+    struct string *server_name;
+    char *port;
+    char *ip;
+    char *root_dir;
+    char *default_file;
 };
 
 /*

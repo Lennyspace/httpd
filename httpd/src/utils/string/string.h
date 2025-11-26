@@ -4,9 +4,10 @@
 #include <ctype.h>
 #include <stddef.h>
 
-struct string {
-  size_t size;
-  char *data;
+struct string
+{
+    size_t size;
+    char *data;
 };
 
 /*
