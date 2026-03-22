@@ -13,12 +13,12 @@ An HTTP/1.1 static file server written in C99, running as a POSIX daemon.
 
 ```
 src/
-├── main.c              # Entry point
-├── config/             # Configuration file parsing
-├── daemon/             # Process daemonization
-├── server/             # Socket setup, accept loop
-├── http/               # HTTP request parsing and response
-└── utils/string/       # String utilities
+|-- main.c              # Entry point
+|-- config/             # Configuration file parsing
+|-- daemon/             # Process daemonization
+|-- server/             # Socket setup, accept loop
+|-- http/               # HTTP request parsing and response
+`-- utils/string/       # String utilities
 ```
 
 ## Build
@@ -47,4 +47,4 @@ make check
 
 ---
 
-EPITA — Systems programming (ING1)
+EPITA - Systems programming (ING1)
